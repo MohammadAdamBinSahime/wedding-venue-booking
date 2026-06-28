@@ -18,7 +18,7 @@ export default function PricingTiers({
 
   return (
     <div>
-      <h3 className="text-lg font-semibold">Costing / Pricing</h3>
+      <h3 className="text-lg font-semibold">Package / Pricing</h3>
       <div className="mt-3 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
         <table className="w-full text-left text-sm">
           <thead className="bg-zinc-100 dark:bg-zinc-900">

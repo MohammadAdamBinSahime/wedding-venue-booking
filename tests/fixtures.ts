@@ -15,6 +15,7 @@ export const test = base.extend({
       pageErrors.push(error.message);
     });
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- Playwright fixture hook, not a React hook
     await use(page);
 
     expect(

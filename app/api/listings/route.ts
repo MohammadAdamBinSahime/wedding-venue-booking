@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { Prisma } from "@/app/generated/prisma/client";
 
 export async function GET(req: Request) {
   try {
@@ -9,7 +10,7 @@ export async function GET(req: Request) {
     const minPrice = searchParams.get("minPrice");
     const maxPrice = searchParams.get("maxPrice");
 
-    const where: any = {};
+    const where: Prisma.ListingWhereInput = {};
 
     if (category && category !== "All") {
       where.category = category;
@@ -18,7 +19,6 @@ export async function GET(req: Request) {
     if (location) {
       where.location = {
         contains: location,
-        mode: "insensitive",
       };
     }
 

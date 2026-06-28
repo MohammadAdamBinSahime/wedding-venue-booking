@@ -47,6 +47,10 @@ next-env.d.ts
 
 # logs
 server.log
+server.err.log
+dev.log
+dev.err
+screenshot.png
 
 # playwright
 /test-results/

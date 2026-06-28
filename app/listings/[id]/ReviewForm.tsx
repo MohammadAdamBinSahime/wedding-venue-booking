@@ -46,8 +46,8 @@ export default function ReviewForm({ listingId, onReviewAdded }: ReviewFormProps
       onReviewAdded(newReview);
       setRating(0);
       setComment("");
-    } catch (err: any) {
-      setError(err.message || "Something went wrong.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);
     }

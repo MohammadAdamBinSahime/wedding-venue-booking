@@ -8,7 +8,8 @@ async function getDefaultUserId() {
   return user?.id;
 }
 
-export async function GET(req: Request) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- Next.js route signature
+export async function GET(_req: Request) {
   try {
     const userId = await getDefaultUserId();
 
