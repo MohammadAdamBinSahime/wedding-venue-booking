@@ -41,6 +41,20 @@ feat: add Additional Details textarea for venue listers
 - Update Playwright create-listing test to verify persistence
 ```
 
+## Auto-Push Rule
+
+After every code change to this repository, the agent must **commit and push to GitHub automatically**.
+
+Workflow:
+1. Make the requested code changes.
+2. Run verification steps: `npx tsc --noEmit`, `npm run lint`, and `npx playwright test`.
+3. Regenerate Playwright screenshot baselines if the UI changed.
+4. Write a detailed commit message following the convention above.
+5. Run `git add -A`, `git commit`, and `git push origin main`.
+6. Do not ask the user for confirmation to push unless the change is destructive (e.g., dropping a database table, force push, or rewriting history).
+
+If a dev server is running on port 3002, stop it before running Playwright tests (Next.js only allows one dev server per directory), then restart it afterward if needed.
+
 ## Current Project State
 
 - Stack: Next.js 16, React 19, Tailwind CSS v4, Prisma 7, SQLite, Playwright.
