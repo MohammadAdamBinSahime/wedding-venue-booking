@@ -89,10 +89,14 @@ test("5. user can create a new venue listing", async ({ page }) => {
     .fill("https://www.google.com/maps/search/?api=1&query=Test+Venue");
   await page.getByPlaceholder("Location").fill("Test Location, Malaysia");
   await page.getByPlaceholder("Base package price (RM)").fill("2500");
+  await page
+    .getByPlaceholder("Describe your venue, special amenities, restrictions")
+    .fill("Free parking available. No open flame catering.");
 
   await page.getByRole("button", { name: "Create venue listing" }).click();
 
   await page.waitForURL(/\/listings\/.+/);
   await expect(page.getByRole("heading", { name: uniqueTitle })).toBeVisible();
   await expect(page.getByText("Test Location, Malaysia").first()).toBeVisible();
+  await expect(page.getByText("Free parking available.")).toBeVisible();
 });

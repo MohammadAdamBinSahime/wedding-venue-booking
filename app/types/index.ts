@@ -38,6 +38,7 @@ export interface Listing {
   pricingTiers: string;
   paymentTerms: string;
   inclusions: string;
+  additionalDetails?: string | null;
   createdAt: string;
   updatedAt: string;
   userId: string;

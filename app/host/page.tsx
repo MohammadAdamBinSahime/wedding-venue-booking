@@ -60,6 +60,7 @@ export default function HostPage() {
     pricingTiers: defaultPricingTiers,
     paymentTerms: defaultPaymentTerms,
     inclusions: defaultInclusions,
+    additionalDetails: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -211,6 +212,14 @@ export default function HostPage() {
           value={form.pricingTiers}
           onChange={(e) => updateField("pricingTiers", e.target.value)}
           className="w-full rounded-lg border border-zinc-300 bg-transparent p-3 font-mono text-sm outline-none focus:border-rose-500 dark:border-zinc-700 dark:bg-zinc-900"
+        />
+        <textarea
+          rows={5}
+          maxLength={2000}
+          placeholder="Describe your venue, special amenities, restrictions, or any other details potential guests should know..."
+          value={form.additionalDetails}
+          onChange={(e) => updateField("additionalDetails", e.target.value)}
+          className="min-h-[120px] w-full rounded-lg border border-zinc-300 bg-white p-3 outline-none focus:border-rose-500 dark:border-zinc-700 dark:bg-zinc-900"
         />
         <textarea
           rows={3}

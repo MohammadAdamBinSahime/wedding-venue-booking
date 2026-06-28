@@ -103,6 +103,7 @@ export async function POST(req: Request) {
       pricingTiers,
       paymentTerms,
       inclusions,
+      additionalDetails,
     } = body;
 
     if (
@@ -137,6 +138,7 @@ export async function POST(req: Request) {
         pricingTiers: safeJson(pricingTiers, []),
         paymentTerms: safeJson(paymentTerms, []),
         inclusions: safeJson(inclusions, []),
+        additionalDetails: additionalDetails || null,
         userId: defaultUser.id,
       },
     });
