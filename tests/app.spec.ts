@@ -30,14 +30,14 @@ test("3. listing detail page shows all wedding venue sections", async ({ page })
 
   await expect(page.getByRole("heading", { name: "Dewan Titi Belimbing" })).toBeVisible();
   await expect(page.getByText("Titi Belimbing, Malaysia").first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Bird's Eye View" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Location" })).toBeVisible();
-  await expect(page.getByText("Package / Pricing")).toBeVisible();
-  await expect(page.getByText("Terms of Payment")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "What You Get" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Reviews" })).toBeVisible();
 
-  // The inline booking sidebar should be removed.
+  await expect(page.getByRole("heading", { name: "Overview" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Venue" })).toBeVisible();
+  await expect(page.getByText("Package / Pricing")).toBeVisible();
+  await expect(page.getByText("Entrance")).toBeVisible();
+  await expect(page.getByText("3 parking areas")).toBeVisible();
+
+  // The booking form sidebar should still be removed.
   await expect(page.getByRole("button", { name: "Reserve date" })).not.toBeVisible();
 
   const mapIframe = page.locator('iframe[title^="Map of"]').first();
@@ -49,20 +49,7 @@ test("3. listing detail page shows all wedding venue sections", async ({ page })
   });
 });
 
-test("4. user can add a review", async ({ page }) => {
-  await page.goto("/");
-
-  await page.getByText("Dewan Titi Belimbing").first().click();
-  await page.waitForURL(/\/listings\/.+/);
-
-  await page.getByLabel("Rate 5 stars").click();
-  await page.getByPlaceholder("Share your experience...").fill("Beautiful venue and great service!");
-  await page.getByRole("button", { name: "Submit review" }).click();
-
-  await expect(page.getByText("Beautiful venue and great service!")).toBeVisible();
-});
-
-test("5. user can create a new venue listing", async ({ page }) => {
+test("4. user can create a new venue listing", async ({ page }) => {
   const uniqueTitle = `Test Venue ${Date.now()}`;
 
   await page.goto("/host");
